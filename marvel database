@@ -1,0 +1,44 @@
+/* Inserting marvel data and querying it! */
+
+CREATE TABLE marvels (ID INTEGER PRIMARY KEY,
+    name TEXT,
+    popularity INTEGER,
+    gender TEXT, 
+    movie TEXT,
+    signaturecolor TEXT,
+    righthand TEXT,
+    weight INTEGER,
+    height INTEGER);
+INSERT into marvels VALUES (1, "captain america", 3, "male", "captain america", "blue", "winter soldier", 200, 7);
+INSERT into marvels VALUES (2, "iron man", 2, "male", "iron man", "red", "spider man",180, 6);
+INSERT into marvels VALUES (3, "spiderman", 1, "male", "spider man", "red", "iron man", 120, 5.8);
+INSERT into marvels VALUES (4, "black widow", 8, "female", "black widow", "black", "hawk eye", 115, 5);
+INSERT into marvels VALUES (5, "thor", 5, "male", "ragnarok", "gold", "rocket", 300, 7);
+INSERT into marvels VALUES (6, "scarlet witch", 4, "female", "wandavison", "red", "vision", 118, 5);
+INSERT into marvels VALUES (7, "doctor strange", 9, "male", "doctor strange", "red", "wong", 150, 6);
+INSERT into marvels VALUES (8, "hulk", 18, "male", "the hulk", "green", "black widow", 500, 9);
+INSERT into marvels VALUES (9, "star-lord", 10, "male", "guardians of the galaxy", "red", "rocket", 185,6);
+INSERT into marvels VALUES (10, "ant-man", 14, "male", "ant-man", "red", "the wasp",145,6);
+
+/* grouping by popularity and gender! */
+
+SELECT name FROM marvels GROUP by popularity;
+
+SELECT * FROM marvels GROUP by popularity HAVING popularity <10;
+
+SELECT * FROM marvels GROUP by popularity HAVING popularity <10 AND gender = "female";
+/* Grouping by height and weight who is tallest, shortest, lightest, and heaviest*/
+
+SELECT * FROM marvels;
+SELECT COUNT(*) FROM marvels WHERE height > 6;
+SELECT COUNT(*) FROM marvels WHERE weight > 180;
+SELECT name, 
+    CASE 
+        WHEN height > 6 THEN "tallest"
+        WHEN weight >= 180 THEN "strongest"
+        WHEN height < 6 THEN "shortest"
+        WHEN weight < 180 THEN "lightest"
+        
+        END as "superior"
+        FROM marvels
+        GROUP BY popularity 
