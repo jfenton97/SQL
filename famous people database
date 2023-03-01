@@ -1,0 +1,39 @@
+/* Creating a table about the people and what they do */
+
+CREATE TABLE celebrities (id INTEGER PRIMARY KEY, name TEXT, famousmovietitle TEXT);
+CREATE TABLE celebritiesA (celeb_id INTEGER PRIMARY KEY, networth INTEGER, age INTEGER, nationality TEXT, married TEXT);
+
+INSERT into celebrities VALUES ( 1, "robert downey jr.", "iron man");
+INSERT into celebrities VALUES (2, "ryan renolds", "green lantern");
+INSERT into celebrities VALUES ( 3, "blake Lively", "green lantern");
+INSERT into celebrities VALUES ( 4, "justin timberlake", "friends with benefits");
+INSERT into celebrities VALUES ( 5, "jessica biel", "valentines day");
+INSERT into celebrities VALUES ( 6, "freddie prinze jr.", "scooby doo");
+INSERT into celebrities VALUES ( 7, "sarah michelle gellar", "scooby doo");
+INSERT into celebrities VALUES (8, "dax shepard", "when in rome");
+INSERT into celebrities VALUES (9, "kristen bell", "when in rome");
+INSERT into celebrities VALUES (10, "chris pratt", "guardians of the galaxy");
+
+INSERT into celebritiesA VALUES (1, 300000000, 57, "american", "susan downey");
+INSERT into celebritiesA VALUES (2, 150000000, 46, "canadian", "blake lively");
+INSERT into celebritiesA VALUES (3, 160000000, 35, "american", "ryan renolds");
+INSERT into celebritiesA VALUES (4, 57000000, 42, "american", "jessica biel");
+INSERT into celebritiesA VALUES (5, 250000000, 40, "american", "justin timberlake");
+INSERT into celebritiesA VALUES (6, 30000000, 46, "american", "sarah michelle gellar");
+INSERT into celebritiesA VALUES (7, 30000000, 45, "american", "freddie prinze jr.");
+INSERT into celebritiesA VALUES (8, 40000000, 48, "american", "kristen bell");
+INSERT into celebritiesA VALUES (9, 40000000, 42, "american", "dax shepard");
+INSERT into celebritiesA VALUES (10, 80000000, 43, "american","katherine schwarzenegger");
+
+/* Joining celebs to who they are married to */
+
+SELECT celebrities.name, celebrities.famousmovietitle, celebritiesA.married
+FROM celebrities
+JOIN celebritiesA 
+ON celebrities.id=celebritiesA.celeb_id;
+
+SELECT celebrities.name, celebritiesA.married
+FROM celebrities
+JOIN celebritiesA
+ON celebrities.id=celebritiesA.celeb_id;
+
